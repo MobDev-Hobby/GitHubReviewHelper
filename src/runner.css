@@ -1,0 +1,18 @@
+#treeMenu{
+	padding:15px 0;
+	width:300px;
+	height:100%;
+	overflow:scroll;
+	position:fixed;
+	top:0px;
+	left:0px;
+	
+	float:left;
+	z-index:1000;
+	background-color:white;
+	border: 1px solid black;
+}
+#treeMenu:hover{
+	width:400px;
+}
+body{padding-left:300px;}

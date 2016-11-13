@@ -1,0 +1,14 @@
+{
+	"name": "github_review_helper",
+	"version": "0.0.1",
+	"main": [
+		"./src/runner.js",
+		"./src/runner.css"
+	],
+	"dependencies": {
+		"jquery": ">=3.0",
+		"jstree": ">=3.3.2",
+		"file-icons": "https://github.com/teambox/Free-file-icons.git",
+		"file-icons2": "https://github.com/marcus/file-type-icons.git"
+	}
+}

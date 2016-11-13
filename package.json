@@ -1,0 +1,15 @@
+{
+	"name": "GitHubReviewHelper",
+	"version": "0.0.1",
+	"devDependencies": {
+		"bower": "*",
+		"grunt": "*",
+		"transfo-unifyurl": "*",
+		"grunt-bower-concat": "*",
+		"grunt-contrib-cssmin": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-data-uri": "*",
+		"grunt-contrib-uglify": "https://github.com/franciscop/grunt-contrib-uglify.git#harmony"
+	}
+}
