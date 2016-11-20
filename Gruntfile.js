@@ -5,8 +5,30 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-data-uri');
-	
+	grunt.loadNpmTasks('grunt-webext-builder');
+
 	grunt.initConfig({
+		"webext_builder":{
+			"chrome": {
+				"privateKey": ".private.pem",
+				"targets": [
+					"chrome-crx"
+				],
+				"files": {
+					"dest":["build"]
+				}
+			},
+			"firefox": {
+				"jwtIssuer": process.env.jwtIssuer,
+				"jwtSecret": process.env.jwtSecret,
+				"targets": [
+					"firefox-xpi"
+				],
+				"files": {
+					"dest":["build"]
+				}
+			}
+		},
 		"bower_concat": {
 			"all": {
 				"dest": {
@@ -62,5 +84,7 @@ module.exports = function(grunt) {
 			}
 		}
 	});
+
 	grunt.registerTask('default', ['bower_concat', 'concat', 'dataUri', 'cssmin', 'uglify', 'copy']);
-}
+	grunt.registerTask('pack', ['default', 'webext_builder']);
+};
