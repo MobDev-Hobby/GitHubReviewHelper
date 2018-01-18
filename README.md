@@ -29,3 +29,4 @@ Unit tests, examples, codestyle, anything else - you are wellcome!
 ## Release History
 `0.0.1` - First extension version. No unit tests, bad codestyle, but seems like it works
 `0.1.0` - Added new GitHub compatibility, added `make pack` command
+`0.1.1` - Fix redraw on AJAX pageload for new github GUI 

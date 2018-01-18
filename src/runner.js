@@ -64,26 +64,39 @@
         }
     };
 
-// Ajax Pageload Watch
-    var activeUrl = window.location.pathname;
-
-    $(document).click(() => {
-        if (activeUrl != window.location.pathname) {
-            activeUrl = window.location.pathname;
-            menu.loadPaths(document.querySelectorAll(".file-info .user-select-contain"), (node) => {
-                return node.title
-            });
+    var getChangedFiles = () => {
+        // Old GitHub version
+        var changedFiles = document.querySelectorAll(".file-info .user-select-contain");
+        // New GitHub version
+        if(changedFiles.length == 0){
+            changedFiles = document.querySelectorAll(".file-info a");
         }
-    });
+        return changedFiles;
+    }
+
+    // Ajax Pageload Watch
+    var activeUrl = window.location.pathname;
+    
+    var delayUpdateTimer = undefined;
+    var delayUpdate = () => {
+        if(delayUpdateTimer){
+            clearTimeout(delayUpdateTimer);
+        }
+        delayUpdateTimer = setTimeout(() => {
+            if (activeUrl != window.location.pathname) {
+                activeUrl = window.location.pathname;
+                menu.loadPaths(getChangedFiles(), (node) => {
+                    return node.title
+                });
+            }
+        }, 500);
+    }
+
+    $(document).click(delayUpdate);
 
     var menu = new Menu("treeMenu");
-    // Old GitHub version
-    var changedFiles = document.querySelectorAll(".file-info .user-select-contain");
-    // New GitHub version
-    if(changedFiles.length == 0){
-        changedFiles = document.querySelectorAll(".file-info a");
-    }
-    menu.loadPaths(changedFiles, (node) => {
+
+    menu.loadPaths(getChangedFiles(), (node) => {
         return node.title
     });
     menu.prependTo(document.querySelectorAll("body")[0]);

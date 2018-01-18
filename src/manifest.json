@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "GitHub Review Helper",
 	"description": "GitHub Review Helper Tool",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"content_scripts": [{
 		"js": ["content_script.js"],
 		"css": ["content_script.css"],
